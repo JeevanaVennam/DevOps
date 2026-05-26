@@ -5,4 +5,3 @@ echo "Seconf certificate $(certificate{1})"
 echo "third certificate $(certificate{2})"
 
 echo "print all the certificates: $(certificate{@})"
-)
