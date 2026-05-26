@@ -5,13 +5,14 @@ then
     echo "Please run script as root"
 else
     echo "you are in root access"
-
+fi
 validate() {
-    if [$1 -ne 0]
+    if [$1 -eq 0]
     then
-    echo "$2 not installed"
-    else
     echo "$2 is installed"
+    else
+    echo "$2 is not installed"
+    exit1
     fi
 }
 dnf list installed mysql
