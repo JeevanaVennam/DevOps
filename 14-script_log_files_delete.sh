@@ -10,7 +10,7 @@ then
 else
     echo -e "$g You are in root access $n"
 fi
-log_folder= "/var/log/shell-logs"
+log_folder="/var/log/shell-logs"
 log_file=$(echo $0 | cut -d "." -f1)
 script_file="$log_folder/$log_file.log"
 source_dir="/home/ec2-user/app-logs"
