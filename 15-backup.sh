@@ -30,12 +30,12 @@ then
     usage
 fi
 
-if [ ! -d source_dir ]
+if [ ! -d "$source_dir" ]
 then
     echo -e "$r Source directory does not exist $n"
     exit 1
 fi
-if [ ! -d desti_dir ] 
+if [ ! -d "$desti_dir" ] 
 then
     echo -e "$r Destination directory does not exist $n"
     exit 1
