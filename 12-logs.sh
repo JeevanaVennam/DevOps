@@ -5,7 +5,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 log-folder="/var/log/shellscript-log"
-script-file=($echo $0 | cut -d "." -f1)
+script-file=(echo $0 | cut -d "." -f1)
 log-file="log_folder/script-file.log"
 packages=("mysql" "python" "nginx" "httpd")
 mkdir -p $log-folder
