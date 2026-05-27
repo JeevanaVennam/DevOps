@@ -9,17 +9,17 @@ script_file=$(echo $0 | cut -d "." -f1)
 log_file="$log_folder/$script_file.log"
 packages=("mysql" "python" "nginx" "httpd")
 mkdir -p $log_folder
-echo"script started execution at $(date)" | tee -a $log_file
+echo "script started execution at $(date)" | tee -a $log_file
 
 if [ $user_id -ne 0 ]
 then
     echo -e "$R Error: Please run as root user $N" | tee -a $log_file
     exit 1
 else
-    echo "$G  You are in root access $N" | tee -a $log_file
-fi
+    echo -e "$G You are in root access $N" | tee -a $log_file
+fi 
 validate(){
-    if [$1 -eq 0]
+    if [ $1 -eq 0 ]
     then
         echo -e "$G $2 is installed $N" | tee -a $log_file
     else
