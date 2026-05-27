@@ -4,7 +4,7 @@ r="\e[31m"
 g="\e[32m"
 y="\e[33m"
 n="\e[0m"
-if [$user_id -ne 0]
+if [ $user_id -ne 0 ]
 then 
     echo -e "$r Please run with sudo access $n"
 else
@@ -17,7 +17,7 @@ source_dir="/home/ec2-user/app-logs"
 mkdir -p $log_folder
 echo -e "$g Script execution started at $(date) $n"
 validate() {
-    if [$1 -eq 0]
+    if [ $1 -eq 0 ]
     then
     echo -e "$g $2 is successful $n"
     else
@@ -25,7 +25,7 @@ validate() {
     exit 1
     fi
 }
-files_to_delete=$(find "source_dir" -name "*.log" -mtime +14)
+files_to_delete=$(find "$source_dir" -name "*.log" -mtime +14)
 if [ -n $files_to_delete ]
 then
     while IFS= read -r filepath
