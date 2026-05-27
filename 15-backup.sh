@@ -2,8 +2,8 @@
 user_id=$(id -u)
 source_dir=$1
 desti_dir=$2
-days=$(3:-14)
-lof_folder="/var/logs/backup_logs"
+days=${3:-14}
+log_folder="/var/logs/backup_logs"
 script_name=$(echo $0 | cut -d "." -f1)
 log_file="$log_folder/$script_name.log"
 r="\e[31m"
