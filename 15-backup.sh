@@ -2,7 +2,7 @@
 user_id=$(id -u)
 source_dir=$1
 desti_dir=$2
-days=$(3: -14)
+days=$(3:-14)
 lof_folder="/var/logs/backup_logs"
 script_name=$(echo $0 | cut -d "." -f1)
 log_file="$log_folder/$script_name.log"
@@ -11,7 +11,7 @@ g="\e[32m"
 y="\e[33m"
 n="\e[0m"
 checkroot(){
-    if [ user_id -ne 0]
+    if [ $user_id -ne 0 ]
     then
         echo -e "$r Please run with sudo access $n"
         exit 1
@@ -25,29 +25,29 @@ usage(){
 }
 checkroot
 
-if [ $# -lt 2]
+if [ $# -lt 2 ]
 then
     usage
 fi
 
-if [! -d source_dir]
+if [ ! -d source_dir ]
 then
     echo -e "$r Source directory does not exist $n"
     exit 1
 fi
-if [! -d desti_dir]
+if [ ! -d desti_dir ] 
 then
     echo -e "$r Destination directory does not exist $n"
     exit 1
 fi
-file= find $source_dir -name "*.log" -mtime +$days
-if [! -z "$files"]
+file= $(find $source_dir -name "*.log" -mtime +$days)
+if [ ! -z $files ]
  then
  echo "Files to zip : $files"
     timestamp=$(date +%F-%H-%M-%S)
     zip_file="$desti_dir/app-logs-$timestamp.zip"
     find $source_dir -name "*.log" -mtime +$days | zip -@ $zip_file
-    if [-f $zip_file]
+    if [ -f $zip_file ]
     then
         echo -e "$g successfully created backup file $n"
         while IFS= read -r filepath
